@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zhao-Han Photography</title>
+  <!-- imagesLoaded 外掛 -->
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <!-- Masonry 外掛 -->
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+  <!-- Lightbox JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Zhao-Han Photography</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+      <a href="resume.pdf" target="_blank">Resume</a>
+      
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>[自我介紹區塊]</p>
+  </section>
+
+  <section id="portfolio"style="max-width: 100vw; padding: 0 10px;">
+    
+
+    <div class="grid">
+      <!-- 每個作品，保留你原本已有的內容或新增到這裡 -->
+      <!-- 範例圖片：你可以保留原本的圖片 HTML，並使用下列格式來套用瀑布流與燈箱 -->
+      <div class="grid-item">
+        <a href="images/sample1.jpg" data-lightbox="gallery" data-title="作品名稱 1">
+          <img src="images/sample1.jpg" alt="作品1">
+          </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample2.jpg" data-lightbox="gallery" data-title="作品名稱 2">
+          <img src="images/sample2.jpg" alt="作品1">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample3.jpg" data-lightbox="gallery" data-title="作品名稱 3">
+          <img src="images/sample3.jpg" alt="作品1">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
+          <img src="images/sample4.jpg" alt="作品1">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample1.jpg" data-lightbox="gallery" data-title="作品名稱 1">
+          <img src="images/sample1.jpg" alt="作品1">
+          </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample2.jpg" data-lightbox="gallery" data-title="作品名稱 2">
+          <img src="images/sample2.jpg" alt="作品1">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample3.jpg" data-lightbox="gallery" data-title="作品名稱 3">
+          <img src="images/sample3.jpg" alt="作品1">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
+          <img src="images/sample4.jpg" alt="作品1">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
+          <img src="images/sample4.jpg" alt="作品1">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
+          <img src="images/sample4.jpg" alt="作品1">
+        </a>
+      </div>
+      
+      <!-- 更多作品可以複製這段來新增 -->
+    </div>
+
+    <script>
+      // 等圖片都載入完後才啟動 Masonry
+      const grid = document.querySelector('.grid');
+      imagesLoaded(grid, function () {
+        // 初始化 Masonry
+        new Masonry(grid, {
+          itemSelector: '.grid-item',
+          columnWidth: '.grid-item',
+          gutter: 10// 每張圖中間的間距
+        });
+      });
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true,
+          'disableScrolling': false,
+          'showImageNumberLabel': true,
+          'fadeDuration': 300,
+          'imageFadeDuration': 300,
+          'disableHistory': true  // <-- 加這個關閉 tab 名稱變化
+        });
+          // 強制固定分頁標題
+        const originalTitle = document.title;
+        window.addEventListener('hashchange', () => {
+          // hash 變動時（例如點了圖片），還原 title
+          document.title = originalTitle;
+        });
+        
+    </script>
+    
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: smallhan0522@gamil.com</p>
+    <p>Instagram: @zhhh_5.5<a href="https://www.instagram.com/zhhh_5.5/?igsh=eWk1YXA4Yng0NzZp&utm_source=qr#" target="_blank" class="icon-link">
+      <i class="fab fa-instagram"></i>
+    </a></p>
+    
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Zhao-Han. All rights reserved.</p>
+  </footer>
+</body>
+</html>

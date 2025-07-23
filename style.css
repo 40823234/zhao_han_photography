@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #000000, #c0edf5);
+    color: #f0f0f0;
+  }
+  
+  header {
+    background-color: #1e1e1e;
+    padding: 1em;
+    text-align: end;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+    text-align: start;
+  }
+  
+  nav a {
+    color: #f0f0f0;
+    margin: 0 1em;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #00ffff;
+  }
+  
+  section {
+    padding: 2em;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  /*.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+  }
+  
+  .gallery img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #000;
+    transition: transform 0.3s;
+  }
+  
+  .gallery img:hover {
+    transform: scale(1.05);
+  }*/
+  
+  
+  footer {
+    text-align: center;
+    padding: 2em;
+    background-color: #1e1e1e;
+    font-size: 0.9em;
+    color: #aaa;
+  }
+  .icon-link {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1.5em;
+  }
+  
+  .icon-link:hover {
+    color: #ff0080;
+  }
+  /* Masonry 外層容器設定 */
+  .grid {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* 每一張圖片的區塊 */
+  .grid-item {
+    width: 300px; /* 或 250px 根據需要調整 */
+    margin-bottom: 16px;
+    break-inside: avoid; /* 防止瀑布流切割圖 */
+  }
+
+  /* 圖片設定：100% 寬度、自動高度，不變形 */
+  .grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+
+  /* 滑鼠移到圖片上放大一點點 */
+  .grid-item img:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+  }
+
+  /* Lightbox 背景設定（可選） */
+  .lb-data .lb-caption {
+    color: white;
+  }
+
+  /* 響應式設計：手機畫面時圖片間距較小 */
+  @media screen and (max-width: 600px) {
+    .grid {
+      padding: 0 10px;
+    }
+    .site-title {
+      font-size: 2rem;
+    }
+  }
+  
