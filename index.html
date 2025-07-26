@@ -3,152 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zhao-Han Photography</title>
-  <!-- imagesLoaded 外掛 -->
-  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <!-- Masonry 外掛 -->
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-  <!-- Lightbox CSS -->
+  <title>Lightbox Minimal Test</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-  <!-- Lightbox JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Small Han</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-      <a href="resume.pdf" target="_blank">Resume</a>
-      
-    </nav>
-  </header>
+  <a href="images/sample1.jpg" data-lightbox="gallery" data-title="1">
+    <img src="images/sample1.jpg" style="width:200px">
+  </a>
+  <a href="images/sample2.jpg" data-lightbox="gallery" data-title="2">
+    <img src="images/sample2.jpg" style="width:200px">
+  </a>
+  <a href="images/sample3.jpg" data-lightbox="gallery" data-title="3">
+    <img src="images/sample3.jpg" style="width:200px">
+  </a>
 
-  <section id="about">
-    <h2>About Me</h2>
-      </section>
-
-  <section id="portfolio"style="max-width: 100vw; padding: 0 10px;">
-    
-
-    <div class="grid">
-      <!-- 每個作品，保留你原本已有的內容或新增到這裡 -->
-      <!-- 範例圖片：你可以保留原本的圖片 HTML，並使用下列格式來套用瀑布流與燈箱 -->
-      <div class="grid-item">
-        <a href="images/sample1.jpg" data-lightbox="gallery" data-title="作品名稱 1">
-          <img src="images/sample1.jpg" alt="作品1">
-          </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample2.jpg" data-lightbox="gallery" data-title="作品名稱 2">
-          <img src="images/sample2.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample3.jpg" data-lightbox="gallery" data-title="作品名稱 3">
-          <img src="images/sample3.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
-          <img src="images/sample4.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample1.jpg" data-lightbox="gallery" data-title="作品名稱 1">
-          <img src="images/sample1.jpg" alt="作品1">
-          </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample2.jpg" data-lightbox="gallery" data-title="作品名稱 2">
-          <img src="images/sample2.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample3.jpg" data-lightbox="gallery" data-title="作品名稱 3">
-          <img src="images/sample3.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
-          <img src="images/sample4.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
-          <img src="images/sample4.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample4.jpg" data-lightbox="gallery" data-title="作品名稱 4">
-          <img src="images/sample4.jpg" alt="作品1">
-        </a>
-      </div>
-      <div class="grid-item">
-        <a href="images/sample6.JPG" data-lightbox="gallery" data-title="作品名稱 4">
-          <img src="images/sample6.JPG" alt="作品1">
-        </a>
-      </div>
-
-      
-      <!-- 更多作品可以複製這段來新增 -->
-    </div>
-
-    <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Masonry + imagesLoaded
-    const grid = document.querySelector('.grid');
-    if (grid) {
-      imagesLoaded(grid, () => {
-        new Masonry(grid, {
-          itemSelector: '.grid-item',
-          columnWidth: '.grid-item',
-          gutter: 10,
-          percentPosition: true
-        });
-      });
-    }
-
-    // Lightbox2 設定（不含 disableHistory）
-    lightbox.option({
-      resizeDuration: 200,
-      wrapAround: true,
-      disableScrolling: false,
-      showImageNumberLabel: true,
-      fadeDuration: 300,
-      imageFadeDuration: 300
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.lightbox) {
+        console.error('Lightbox2 沒載到');
+        return;
+      }
+      window.lightbox.option({ wrapAround: true });
     });
-
-    // 以 MutationObserver 鎖定分頁標題，避免被 Lightbox 改變
-    const originalTitle = document.title;
-    const titleEl = document.querySelector('title');
-    if (titleEl) {
-      const titleObserver = new MutationObserver(() => {
-        if (document.title !== originalTitle) {
-          document.title = originalTitle;
-        }
-      });
-      titleObserver.observe(titleEl, { childList: true });
-       }
-      });
-     </script>
-    
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: smallhan0522@gamil.com</p>
-    <p>Instagram: @zhhh_5.5<a href="https://www.instagram.com/zhhh_5.5/?igsh=eWk1YXA4Yng0NzZp&utm_source=qr#" target="_blank" class="icon-link">
-      <i class="fab fa-instagram"></i>
-    </a></p>
-    
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Small-Han. All rights reserved.</p>
-  </footer>
+  </script>
 </body>
 </html>
