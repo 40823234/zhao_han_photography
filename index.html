@@ -89,7 +89,7 @@
       </div>
       <div class="grid-item">
         <a href="images/sample6.jpg" data-lightbox="gallery" data-title="作品名稱 4">
-          <img src="images/sample6.JPG" alt="作品1">
+          <img src="images/sample6.jpg" alt="作品1">
         </a>
       </div>
 
@@ -98,33 +98,43 @@
     </div>
 
     <script>
-      // 等圖片都載入完後才啟動 Masonry
-      const grid = document.querySelector('.grid');
-      imagesLoaded(grid, function () {
-        // 初始化 Masonry
+  document.addEventListener('DOMContentLoaded', () => {
+    // Masonry + imagesLoaded
+    const grid = document.querySelector('.grid');
+    if (grid) {
+      imagesLoaded(grid, () => {
         new Masonry(grid, {
           itemSelector: '.grid-item',
           columnWidth: '.grid-item',
-          gutter: 10// 每張圖中間的間距
+          gutter: 10,
+          percentPosition: true
         });
       });
-        lightbox.option({
-          'resizeDuration': 200,
-          'wrapAround': true,
-          'disableScrolling': false,
-          'showImageNumberLabel': true,
-          'fadeDuration': 300,
-          'imageFadeDuration': 300,
-          'disableHistory': true  // <-- 加這個關閉 tab 名稱變化
-        });
-          // 強制固定分頁標題
-        const originalTitle = document.title;
-        window.addEventListener('hashchange', () => {
-          // hash 變動時（例如點了圖片），還原 title
+    }
+
+    // Lightbox2 設定（不含 disableHistory）
+    lightbox.option({
+      resizeDuration: 200,
+      wrapAround: true,
+      disableScrolling: false,
+      showImageNumberLabel: true,
+      fadeDuration: 300,
+      imageFadeDuration: 300
+    });
+
+    // 以 MutationObserver 鎖定分頁標題，避免被 Lightbox 改變
+    const originalTitle = document.title;
+    const titleEl = document.querySelector('title');
+    if (titleEl) {
+      const titleObserver = new MutationObserver(() => {
+        if (document.title !== originalTitle) {
           document.title = originalTitle;
-        });
-        
-    </script>
+        }
+      });
+      titleObserver.observe(titleEl, { childList: true });
+       }
+      });
+     </script>
     
   </section>
 
@@ -138,7 +148,7 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Zhao-Han. All rights reserved.</p>
+    <p>&copy; 2025 Small-Han. All rights reserved.</p>
   </footer>
 </body>
 </html>
