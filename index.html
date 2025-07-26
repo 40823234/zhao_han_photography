@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zhao-Han Photography</title>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Lightbox2 CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
 
-  <!-- Masonry CSS (非必要，這裡假設你用自己的 style.css) -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -52,7 +49,7 @@
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: smallhan0522@gamil.com</p>
-    <p>Instagram: @zhhh_5.5 
+    <p>Instagram: @zhhh_5.5
       <a href="https://www.instagram.com/zhhh_5.5/?igsh=eWk1YXA4Yng0NzZp&utm_source=qr#" target="_blank" class="icon-link">
         <i class="fab fa-instagram"></i>
       </a>
@@ -63,20 +60,17 @@
     <p>&copy; 2025 Small-Han. All rights reserved.</p>
   </footer>
 
-  <!-- 先載入第三方套件 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
   <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
   <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" defer></script>
 
-  <!-- 初始化程式碼 -->
   <script defer>
     document.addEventListener('DOMContentLoaded', () => {
-      if (!window.lightbox) {
-        console.error('Lightbox2 沒有成功載入！');
-        return;
-      }
-
-      // Lightbox 設定
+      // Lightbox 設定 - 確保在 DOMContentLoaded 事件中執行
+      // 因為現在 jQuery 和 Lightbox 都已正確載入，所以不需要檢查 window.lightbox
       lightbox.option({
         resizeDuration: 200,
         wrapAround: true,
