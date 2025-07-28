@@ -115,4 +115,82 @@ body {
       font-size: 2rem;
     }
   }
-  
+  .hero-header {
+  height: 500px; /* 根據您的需求調整高度 */
+  background-image: url('images/header-background.jpg'); /* 替換成您的圖片路徑 */
+  background-size: cover; /* 讓圖片覆蓋整個區域 */
+  background-position: center; /* 圖片置中 */
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center; /* 垂直置中內容 */
+  justify-content: center; /* 水平置中內容 */
+  position: relative; /* 為了讓疊加層可以相對定位 */
+  color: white; /* 讓文字在深色背景上可見 */
+  text-align: center;
+}
+
+.header-overlay {
+  position: absolute; /* 相對於 .hero-header 定位 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 黑色半透明疊加層，0.5 代表 50% 不透明度 */
+  display: flex; /* 讓內部元素可以 flex 排列 */
+  flex-direction: column; /* 垂直排列 */
+  justify-content: space-between; /* 將 h1/nav 和 hero-text 推到兩端 */
+  padding: 20px; /* 內部間距 */
+  box-sizing: border-box; /* 確保 padding 不增加寬高 */
+}
+
+/* 調整標題和導航的樣式 */
+.hero-header h1 {
+  margin: 0;
+  font-size: 3em;
+  /* 為了像範例圖片一樣，讓標題和導航在上方，可以使用 flexbox 調整 */
+  /* 確保 h1 和 nav 不被 hero-text 推到中間 */
+  align-self: flex-start; /* 讓 H1 靠上 */
+  width: 100%; /* 讓 H1 佔滿寬度 */
+  text-align: left; /* 靠左對齊 */
+  padding-left: 20px; /* 與左邊緣的距離 */
+}
+
+.hero-header nav {
+  /* 為了像範例圖片一樣，讓導航在上方，可以使用 flexbox 調整 */
+  align-self: flex-end; /* 讓導航靠右 */
+  position: absolute; /* 絕對定位到右上角 */
+  top: 20px; /* 與頂部的距離 */
+  right: 20px; /* 與右側的距離 */
+}
+
+.hero-header nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+/* 介紹文字的樣式 */
+.hero-text {
+  margin-top: auto; /* 將這部分推到容器的底部 */
+  margin-bottom: 50px; /* 距離底部的間距 */
+  font-size: 1.5em;
+  line-height: 1.5;
+  width: 80%; /* 控制文字寬度 */
+  margin-left: auto; /* 讓文字塊置中 */
+  margin-right: auto; /* 讓文字塊置中 */
+  text-align: center; /* 文字置中 */
+}
+
+/* 如果你的原始 header 有 background-color，可能需要移除 */
+header {
+  background-color: transparent; /* 確保沒有其他背景顏色干擾 */
+  /* 其他原有的 header 樣式... */
+}
+
+/* 確保網站其他部分的樣式不被影響 */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+步驟：

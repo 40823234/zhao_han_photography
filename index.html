@@ -12,14 +12,21 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Small Han</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-      <a href="resume.pdf" target="_blank">Resume</a>
-    </nav>
+  <header class="hero-header"> {/* 修改這裡，增加一個 class */}
+    <div class="header-overlay"> {/* 新增透明條的容器 */}
+      <h1>Small Han</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf" target="_blank">Resume</a>
+      </nav>
+      {/* 這裡可以放你的介紹文字，類似 Many SMN 的 "Hi, I'm..." */}
+      <div class="hero-text">
+        <p>Hi, I'm Small Han, a photographer based in Yilan, Taiwan,</p>
+        <p>with a passion for capturing the beauty around us.</p>
+      </div>
+    </div>
   </header>
 
   <section id="about">
