@@ -117,7 +117,7 @@ body {
   }
   .hero-header {
   height: 250px; /* 根據您的需求調整高度 */
-  background-image: url('images/header-background1.jpg'); /* 替換成您的圖片路徑 */
+  background-image: url('images/header-background.jpg'); /* 替換成您的圖片路徑 */
   background-size: cover; /* 讓圖片覆蓋整個區域 */
   background-position: center; /* 圖片置中 */
   background-repeat: no-repeat;
