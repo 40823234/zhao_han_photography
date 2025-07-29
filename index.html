@@ -14,13 +14,16 @@
 <body>
   <header class="hero-header">  <!--修改這裡，增加一個 class-->
     <div class="header-overlay"> <!--新增透明條的容器-->
-      <h1>Small Han</h1>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-        <a href="resume.pdf" target="_blank">Resume</a>
-      </nav>
+      <div class="header-top-bar">
+        <h1>Small Han</h1>
+        <nav>
+          <a href="#menu">Menu</a>
+          <a href="#about">About</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#contact">Contact</a>
+          <a href="resume.pdf" target="_blank">Resume</a>
+        </nav>
+      </div>
       <!-- 這裡可以放你的介紹文字，類似 Many SMN 的 "Hi, I'm..." -->
       <div class="hero-text">
         <p>Hi, I'm Small Han, a photographer based in Yilan, Taiwan,</p>
@@ -29,7 +32,7 @@
     </div>
   </header>
 
-  <section id="about">
+  <section id="menu">
     <h2>About Me</h2>
   </section>
 
@@ -46,8 +49,8 @@
         </a>
       </div>
       <div class="grid-item">
-        <a href="images/sample3.jpg" data-lightbox="gallery" data-title="作品名稱 3">
-          <img src="images/sample3.jpg" alt="作品3">
+        <a href="images/sample3.jpg" data-lightbox="gallery">
+          <img src="images/sample3.jpg" >
         </a>
       </div>
     </div>
@@ -55,12 +58,14 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: smallhan0522@gamil.com</p>
-    <p>Instagram: @zhhh_5.5
+    <div class="contact-icons">
+      <a href="mailto:smallhan0522@gamil.com" class="icon-link">
+          <i class="fas fa-envelope"></i> </a>
+    
       <a href="https://www.instagram.com/zhhh_5.5/?igsh=eWk1YXA4Yng0NzZp&utm_source=qr#" target="_blank" class="icon-link">
         <i class="fab fa-instagram"></i>
       </a>
-    </p>
+    </div>
   </section>
 
   <footer>
