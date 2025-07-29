@@ -212,7 +212,7 @@ body {
   align-items: center; /* 垂直置中 */
   width: 100%; /* 佔滿寬度 */
   margin-bottom: 20px; /* 在導航列下方為 hero-text 留出空間 */
-  background-color: rgba(124, 118, 118, 0.571); /* 設定白底，調整透明度 */
+  background: linear-gradient(to bottom, #ffffff9e, #928c8c3e); /* 設定白底，調整透明度 */
   padding: 10px 20px; /* 上下和左右的內邊距 */
   box-sizing: border-box; /* 確保 padding 不增加寬高 */
   position: absolute; /* 相對於 .header-overlay 定位 */
