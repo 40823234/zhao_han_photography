@@ -238,7 +238,7 @@ body {
   
   /* 檢查預設圖片路徑，確保它是正確的 */
   /* 通常 Lightbox 的 close.png 圖片位於 css/images 或 images 資料夾下 */
-  background: url('../images/close.png') no-repeat; /* 預設關閉圖示的路徑。請確認 'images' 相對於你的 CSS 檔案的路徑是否正確 */
+  background: url('images/close.png') no-repeat; /* 預設關閉圖示的路徑。請確認 'images' 相對於你的 CSS 檔案的路徑是否正確 */
   
   /* 如果你不確定路徑，暫時移除 background 看看它是否顯示文字的叉叉 */
   /* background: none; */ 
