@@ -20,7 +20,7 @@ body {
     margin-right: auto; /* 將右邊距設為 auto，使其保持響應式並靠左 */
     /* margin: auto;  <-- 請移除這一行，或用上面兩行替換 */
     text-align: left; /* 讓內容靠左對齊 */
-    padding-left: 50px; /* 增加左側內邊距，使其向左移動 */
+    padding-left: 0px; /* 增加左側內邊距，使其向左移動 */
     box-sizing: border-box; /* 確保 padding 不增加寬度 */
   }
   /*.gallery {
@@ -59,7 +59,7 @@ body {
   .icon-link {
     color: #f0f0f0;
     text-decoration: none;
-    font-size: 3em;
+    font-size: 2em;
   }
   
   .icon-link:hover {
@@ -142,7 +142,7 @@ body {
 /* 調整標題和導航的樣式 */
 .hero-header h1 {
   margin: 0;
-  font-size: 2.2em;
+  font-size: 1.7em;
   /* 為了像範例圖片一樣，讓標題和導航在上方，可以使用 flexbox 調整 */
   /* 確保 h1 和 nav 不被 hero-text 推到中間 */
   /*align-self: flex-start; /* 讓 H1 靠上 */
@@ -186,14 +186,15 @@ body {
 
 /* 介紹文字的樣式 */
 .hero-text {
-  margin-top: 100px; /* 將這部分推到容器的底部 */
+  margin-top: 125px; /* 將這部分推到容器的底部 */
   margin-bottom: 50px; /* 距離底部的間距 */
-  font-size: 1.5em;
+  font-size: 1.6em;
   line-height: 1.5;
   width: 80%; /* 控制文字寬度 */
   margin-left: auto; /* 讓文字塊置中 */
   margin-right: auto; /* 讓文字塊置中 */
   text-align: center; /* 文字置中 */
+  color: rgba(255, 255, 255, 0.579);
 }
 
 /* 如果你的原始 header 有 background-color，可能需要移除 */
