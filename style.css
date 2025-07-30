@@ -194,7 +194,12 @@ body {
   margin-left: auto; /* 讓文字塊置中 */
   margin-right: auto; /* 讓文字塊置中 */
   text-align: center; /* 文字置中 */
-  color: rgba(255, 255, 255, 0.579);
+  /*color: rgba(255, 255, 255, 0.579);*/
+  background: linear-gradient(to right, #00ffff, #ff0080);
+  -webkit-background-clip: text; /* 針對 Webkit 瀏覽器 (Chrome, Safari) */
+  background-clip: text; /* 標準屬性 */
+  -webkit-text-fill-color: transparent; /* 針對 Webkit 瀏覽器 */
+  color: transparent; /* 標準屬性，確保文字本身透明 */
 }
 
 /* 如果你的原始 header 有 background-color，可能需要移除 */
