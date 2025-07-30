@@ -10,7 +10,8 @@ body {
   section {
     padding: 2em;
     max-width: 800px;
-    margin: auto;
+    margin-left: 45px;   /* 將左邊距設為 0，確保它緊貼左側 */
+    margin-right: auto; /* 將右邊距設為 auto，這會將整個區塊推向左邊 */
   }
   section#contact{ /* 選擇更精確，避免影響其他 section */
     padding: 2em;
@@ -111,7 +112,7 @@ body {
     }
   }
   .hero-header {
-  height: 280px; /* 根據您的需求調整高度 */
+  height: 350px; /* 根據您的需求調整高度 */
   background-image: url('images/header-background.jpg'); /* 替換成您的圖片路徑 */
   background-size: cover; /* 讓圖片覆蓋整個區域 */
   background-position: 40% 52%; /* 圖片置中 */
@@ -141,7 +142,7 @@ body {
 /* 調整標題和導航的樣式 */
 .hero-header h1 {
   margin: 0;
-  font-size: 3em;
+  font-size: 2.2em;
   /* 為了像範例圖片一樣，讓標題和導航在上方，可以使用 flexbox 調整 */
   /* 確保 h1 和 nav 不被 hero-text 推到中間 */
   /*align-self: flex-start; /* 讓 H1 靠上 */
@@ -185,7 +186,7 @@ body {
 
 /* 介紹文字的樣式 */
 .hero-text {
-  margin-top: 50px; /* 將這部分推到容器的底部 */
+  margin-top: 100px; /* 將這部分推到容器的底部 */
   margin-bottom: 50px; /* 距離底部的間距 */
   font-size: 1.5em;
   line-height: 1.5;
@@ -218,6 +219,23 @@ body {
   position: absolute; /* 相對於 .header-overlay 定位 */
   top: 0; /* 讓白底從頂部開始 */
   left: 0; /* 讓白底從左邊開始 */
+}
+.hero-header-plain {
+    height: auto; /* 將高度設定為自動，讓內容決定高度 */
+    background-image: none; /* 移除背景圖片 */
+    background-size: auto; /* 移除背景大小設定 */
+    background-position: unset; /* 重置背景定位 */
+    background-repeat: unset; /* 重置背景重複設定 */
+    background-color: #333; /* 可以設定一個純色背景，例如深灰色，或 transparent */
+    
+    /* 確保文字不會因為背景顏色變透明而看不見，或者與上方白底有好的對比 */
+    color: white; /* 這裡可以再次確保文字顏色 */
+    text-align: center; /* 這裡也可以再次確保文本置中，或者如果你希望文字靠左就設為 left */
+    
+    /* 你可能需要根據實際效果調整 padding-top 和 padding-bottom，
+       讓 header-overlay 內的內容有足夠的上下空間 */
+    padding-top: 50px; /* 為標題和文字預留頂部空間 */
+    padding-bottom: 50px; /* 為底部預留空間 */
 }
 /* Lightbox 關閉按鈕樣式調整 */
 .lightbox .lb-close {
@@ -266,4 +284,67 @@ body {
 .lightbox .lb-dataContainer .lb-number {
     /* 如果數字和叉叉重疊，可能需要調整 */
     margin-right: 40px; /* 為叉叉留出空間 */
+}
+.dropdown {
+  position: relative; /* 使下拉選單內容能夠相對於此容器定位 */
+  display: inline-block; /* 讓下拉選單與導覽列的其他連結並排 */
+}
+
+.dropbtn {
+  color: black; /* 確保連結文字在白底上可見 */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer; /* 顯示為可點擊 */
+}
+
+.dropbtn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #00ffff;
+}
+
+.dropdown-content {
+  display: none; /* 預設隱藏下拉選單內容 */
+  position: absolute; /* 相對於 .dropdown 定位 */
+  background-color: #42414184; /* 下拉選單背景色 */
+  min-width: 160px; /* 最小寬度 */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 陰影效果 */
+  z-index: 100; /* 確保下拉選單在其他內容之上 */
+  border-radius: 5px; /* 圓角 */
+  left: 0; /* 讓下拉選單從按鈕左側對齊 */
+  top: 100%; /* 從按鈕下方開始顯示 */
+}
+
+.dropdown-content a {
+  color: black; /* 下拉選單連結的文字顏色 */
+  padding: 12px 16px; /* 內邊距 */
+  text-decoration: none;
+  display: block; /* 讓每個連結佔據一行 */
+  text-align: left; /* 文字靠左對齊 */
+  transition: background-color 0.2s ease;
+  border-radius: 5px; /* 圓角 */
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd; /* 懸停時的背景色 */
+  color: #00ffff;
+}
+
+/* 當滑鼠懸停在 .dropdown 容器上時，顯示 .dropdown-content */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 調整 .hero-header nav a 的 margin-left，確保整體間距統一 */
+.hero-header nav a {
+  margin-left: 20px; /* 導航連結之間的間距 */
+  /* 確保這個值與 .dropbtn 的間距協調 */
+}
+
+/* 確保 .hero-header nav 中的 .dropbtn 樣式與其他 nav a 一致 */
+.hero-header nav .dropbtn {
+  /* 可以繼承 .hero-header nav a 的樣式，或在此處單獨定義 */
+  margin-left: 20px; /* 保持與其他導航連結相同的間距 */
 }
