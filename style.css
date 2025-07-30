@@ -9,8 +9,8 @@ body {
   
   section {
     padding: 2em;
-    max-width: 800px;
-    margin-left: 45px;   /* 將左邊距設為 0，確保它緊貼左側 */
+    max-width: 1200px;
+    margin-left: auto;   /* 將左邊距設為 0，確保它緊貼左側 */
     margin-right: auto; /* 將右邊距設為 auto，這會將整個區塊推向左邊 */
   }
   section#contact{ /* 選擇更精確，避免影響其他 section */
@@ -73,13 +73,16 @@ body {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   /* 每一張圖片的區塊 */
   .grid-item {
-    width: 300px; /* 或 250px 根據需要調整 */
+    flex: 1 1 300px;
+    max-width: 300px; /* 確保它不會無限擴大 */
     margin-bottom: 16px;
-    break-inside: avoid; /* 防止瀑布流切割圖 */
+    margin-right: 10px; /* 確保 Masonry 的 gutter 也被考慮 */
+    break-inside: avoid;
   }
 
   /* 圖片設定：100% 寬度、自動高度，不變形 */
@@ -112,7 +115,7 @@ body {
     }
   }
   .hero-header {
-  height: 350px; /* 根據您的需求調整高度 */
+  min-height: 350px; /* 根據您的需求調整高度 */
   background-image: url('images/header-background.jpg'); /* 替換成您的圖片路徑 */
   background-size: cover; /* 讓圖片覆蓋整個區域 */
   background-position: 40% 52%; /* 圖片置中 */
@@ -142,13 +145,12 @@ body {
 /* 調整標題和導航的樣式 */
 .hero-header h1 {
   margin: 0;
-  font-size: 1.7em;
+  font-size: clamp(1.8em, 4vw, 1.7em);
   /* 為了像範例圖片一樣，讓標題和導航在上方，可以使用 flexbox 調整 */
   /* 確保 h1 和 nav 不被 hero-text 推到中間 */
   /*align-self: flex-start; /* 讓 H1 靠上 */
   /*width: 100%; /* 讓 H1 佔滿寬度 */
   text-align: left; /* 靠左對齊 */
-  padding-left: 0; /* 移除原本的 padding-left，現在由 .header-overlay 的 padding 控制 */
   flex-shrink: 0; /* 防止標題被壓縮 */
 }
 
@@ -173,10 +175,9 @@ body {
 .hero-header nav a {
   color: white;
   text-decoration: none;
-  margin-left: 20px;
   font-weight: bold;
-  margin-left: 15px; /* 調整內邊距後，為了更好的間距調整左邊距 */
-  margin-right: 15px; /* 為了保持一致的間距增加右邊距 */
+  margin-left: clamp(10px, 2vw, 20px); /* 調整內邊距後，為了更好的間距調整左邊距 */
+  margin-right: clamp(10px, 2vw, 20px); /* 為了保持一致的間距增加右邊距 */
   transition: color 0.3s ease; /* 懸停效果的平滑過渡 */
   border-radius: 5px; /* 連結背景的圓角 */
 }
@@ -188,7 +189,7 @@ body {
 .hero-text {
   margin-top: 125px; /* 將這部分推到容器的底部 */
   margin-bottom: 50px; /* 距離底部的間距 */
-  font-size: 1.6em;
+  font-size: clamp(1.2em, 2.5vw, 1.6em);
   line-height: 1.5;
   width: 80%; /* 控制文字寬度 */
   margin-left: auto; /* 讓文字塊置中 */
@@ -225,6 +226,7 @@ body {
   position: absolute; /* 相對於 .header-overlay 定位 */
   top: 0; /* 讓白底從頂部開始 */
   left: 0; /* 讓白底從左邊開始 */
+  flex-wrap: wrap; /* 允許換行 */
 }
 .hero-header-plain {
     height: auto; /* 將高度設定為自動，讓內容決定高度 */
@@ -353,4 +355,137 @@ body {
 .hero-header nav .dropbtn {
   /* 可以繼承 .hero-header nav a 的樣式，或在此處單獨定義 */
   margin-left: 20px; /* 保持與其他導航連結相同的間距 */
+}
+@media screen and (max-width: 768px) {
+    /* [新增/修改]：調整 body 的字體大小，可以考慮使用 vw */
+    body {
+        font-size: 15px;
+    }
+
+    /* [修改]：調整主要 section 的左右邊距，讓它更滿 */
+    section {
+        padding: 1.5em; /* 稍微減少內邊距 */
+        margin-left: 15px; /* 靠近左側 */
+        margin-right: 15px; /* 靠近右側 */
+    }
+
+    /* [修改]：針對 #contact section 在小螢幕下的調整 */
+    section#contact {
+        margin-left: 15px; /* 讓它和其它 section 統一 */
+        padding-left: 15px; /* 減少內邊距，避免太靠近邊緣 */
+    }
+
+    /* [修改]：調整 header 標題字體大小 */
+    .hero-header h1 {
+        font-size: 2em; /* 適合手機的字體大小 */
+        text-align: center; /* 標題置中 */
+        width: 100%; /* 佔滿寬度 */
+    }
+
+    /* [修改]：調整導航列佈局為堆疊式（或漢堡選單） */
+    .hero-header nav {
+        flex-direction: column; /* 垂直堆疊導航連結 */
+        align-items: center; /* 置中連結 */
+        padding-right: 0; /* 移除右側 padding */
+        margin-top: 10px; /* 標題下方間距 */
+        width: 100%; /* 確保導航區塊佔滿寬度 */
+    }
+
+    .hero-header nav a,
+    .hero-header nav .dropbtn {
+        margin-left: 0; /* 移除左右間距 */
+        margin-right: 0; /* 移除左右間距 */
+        padding: 8px 0; /* 上下內邊距，左右為 0 */
+        width: 100%; /* 讓每個連結佔滿導航列的寬度 */
+        text-align: center; /* 連結文字置中 */
+    }
+
+    .dropdown-content {
+        position: static; /* 在小螢幕下，下拉選單跟隨內容流動 */
+        width: 100%; /* 佔滿父元素寬度 */
+        box-shadow: none; /* 移除陰影 */
+        background-color: #424141d0; /* 讓背景稍微淺一點，和主導航背景區分 */
+    }
+
+    /* [修改]：調整 header-top-bar 在小螢幕下的佈局 */
+    .header-top-bar {
+        flex-direction: column; /* 讓標題和導航垂直堆疊 */
+        position: static; /* 讓它回到正常流，方便內容向下推 */
+        padding: 10px 15px; /* 調整左右內邊距 */
+        margin-bottom: 0; /* 移除底部間距 */
+    }
+
+    /* [修改]：調整 hero-text 字體大小和寬度 */
+    .hero-text {
+        font-size: 1.2em;
+        width: 90%; /* 增加文字寬度佔比 */
+        margin-top: 50px; /* 調整頂部間距 */
+        margin-bottom: 30px; /* 調整底部間距 */
+    }
+
+    /* [修改]：Masonry Grid 在小螢幕下的調整 */
+    .grid {
+      padding: 0 10px; /* 確保左右有內邊距 */
+      /* [新增]：讓項目在小螢幕下變成一列或兩列 */
+      justify-content: center; /* 在無法完全填滿時置中 */
+    }
+
+    .grid-item {
+        /* [修改]：在小螢幕上，讓圖片佔滿大部分寬度，只顯示一列或兩列 */
+        flex-basis: calc(100% - 20px); /* 考慮到左右 10px 的間距 */
+        max-width: calc(100% - 20px);
+        margin-right: 0; /* 移除單個項目的右邊距，間距由 grid 的 justify-content 和 padding 控制 */
+    }
+}
+
+/* 針對更小的螢幕（例如 iPhone SE，最大寬度 480px） */
+@media screen and (max-width: 480px) {
+    /* [修改]：進一步縮小字體 */
+    body {
+        font-size: 14px;
+    }
+
+    .hero-header h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-text {
+        font-size: 1em;
+        width: 95%;
+    }
+
+    /* [修改]：grid-item 在非常小的螢幕上確保只顯示一列 */
+    .grid-item {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    /* [修改]：調整 contact icons 的間距 */
+    .contact-icons {
+        gap: 20px;
+        justify-content: center; /* 小螢幕下置中圖示 */
+    }
+}
+
+/* 針對中等螢幕（例如平板橫向或小型筆電，最大寬度 1024px） */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    /* [修改]：調整主要 section 的左右邊距，讓它更滿 */
+    section {
+        padding: 2em;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    section#contact {
+        margin-left: 50px; /* 可以在這個斷點設置不同的左邊距 */
+        padding-left: 30px;
+    }
+
+    /* [修改]：grid-item 在中等螢幕下顯示兩列或三列 */
+    .grid-item {
+        flex-basis: calc(33.333% - 20px); /* 三列，考慮 gutter */
+        max-width: calc(33.333% - 20px);
+    }
+    /* 如果 Masonry 處理 gutter，這裡的 calc 可以更精確 */
+    /* 例如 flex-basis: calc(33.333% - (gutter * 2 / 3)); */
 }
