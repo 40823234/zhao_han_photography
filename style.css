@@ -359,6 +359,58 @@ body {
   /* 可以繼承 .hero-header nav a 的樣式，或在此處單獨定義 */
   margin-left: 20px; /* 保持與其他導航連結相同的間距 */
 }
+.hamburger-menu {
+    display: none; /* 預設隱藏 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000; /* 確保在最上層 */
+    position: relative; /* 為了 bar 的定位 */
+    width: 40px; /* 漢堡按鈕的寬度 */
+    height: 30px; /* 漢堡按鈕的高度 */
+    flex-shrink: 0; /* 防止被擠壓 */
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white; /* 漢堡條顏色 */
+    border-radius: 2px;
+    margin: 6px 0; /* 條之間的間距 */
+    transition: all 0.3s ease; /* 添加過渡動畫 */
+}
+
+/* 漢堡圖標動畫：變成叉叉 */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0; /* 中間的條隱藏 */
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* 導覽列的預設樣式 (桌面版) */
+.main-nav {
+    display: flex; /* 桌面版保持 flex 行排列 */
+    justify-content: flex-end;
+    align-items: center;
+    width: auto; /* 讓導航寬度自適應內容 */
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+/* 當 nav 內部有 dropdown 時的對齊 (已存在，確保其行為正常) */
+.hero-header nav a,
+.hero-header nav .dropbtn {
+    margin-left: 20px;
+}
+
 @media screen and (max-width: 768px) {
     /* [新增/修改]：調整 body 的字體大小，可以考慮使用 vw */
     body {
@@ -542,55 +594,4 @@ body {
     }
     /* 如果 Masonry 處理 gutter，這裡的 calc 可以更精確 */
     /* 例如 flex-basis: calc(33.333% - (gutter * 2 / 3)); */
-}
-.hamburger-menu {
-    display: none; /* 預設隱藏 */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1000; /* 確保在最上層 */
-    position: relative; /* 為了 bar 的定位 */
-    width: 40px; /* 漢堡按鈕的寬度 */
-    height: 30px; /* 漢堡按鈕的高度 */
-    flex-shrink: 0; /* 防止被擠壓 */
-}
-
-.hamburger-menu .bar {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: white; /* 漢堡條顏色 */
-    border-radius: 2px;
-    margin: 6px 0; /* 條之間的間距 */
-    transition: all 0.3s ease; /* 添加過渡動畫 */
-}
-
-/* 漢堡圖標動畫：變成叉叉 */
-.hamburger-menu.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.hamburger-menu.active .bar:nth-child(2) {
-    opacity: 0; /* 中間的條隱藏 */
-}
-
-.hamburger-menu.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* 導覽列的預設樣式 (桌面版) */
-.main-nav {
-    display: flex; /* 桌面版保持 flex 行排列 */
-    justify-content: flex-end;
-    align-items: center;
-    width: auto; /* 讓導航寬度自適應內容 */
-    padding-right: 20px;
-    box-sizing: border-box;
-}
-
-/* 當 nav 內部有 dropdown 時的對齊 (已存在，確保其行為正常) */
-.hero-header nav a,
-.hero-header nav .dropbtn {
-    margin-left: 20px;
 }
