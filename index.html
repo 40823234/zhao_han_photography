@@ -18,7 +18,12 @@
       <div class="header-top-bar">
         
         <h1>Small Han</h1>
-        <nav>
+        <button class="hamburger-menu" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav class="main-nav">
           <a href="#menu">Menu</a>
           <a href="About.html">About me</a>
           <div class="dropdown">
@@ -147,6 +152,25 @@
         titleObserver.observe(titleEl, { childList: true });
       }
     });
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('.main-nav'); // 選擇我們為 nav 添加的新 class
+
+      if (hamburger && nav) {
+        hamburger.addEventListener('click', () => {
+          nav.classList.toggle('active'); // 切換 nav 的 'active' class
+          hamburger.classList.toggle('active'); // 切換漢堡按鈕的 'active' class (用於動畫)
+        });
+      }
+      /* [新增結束] 漢堡選單 JavaScript */
+
+      /* [新增] 讓 hero-text 浮現的 JavaScript (請確保這段在 nav 邏輯之後，且 heroText 變數名不衝突) */
+      const heroText = document.querySelector('.hero-text');
+      if (heroText) {
+          setTimeout(() => {
+              heroText.classList.add('fade-in');
+          }, 500); // 這裡設定 500 毫秒 (0.5 秒) 的延遲
+      }
+      
   </script>
 </body>
 </html>
