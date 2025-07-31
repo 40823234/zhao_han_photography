@@ -117,7 +117,6 @@
   <script defer>
     document.addEventListener('DOMContentLoaded', () => {
       // Lightbox 設定 - 確保在 DOMContentLoaded 事件中執行
-      // 因為現在 jQuery 和 Lightbox 都已正確載入，所以不需要檢查 window.lightbox
       lightbox.option({
         resizeDuration: 200,
         wrapAround: true,
@@ -151,26 +150,29 @@
         });
         titleObserver.observe(titleEl, { childList: true });
       }
-    });
-    const hamburger = document.querySelector('.hamburger-menu');
-    const nav = document.querySelector('.main-nav'); // 選擇我們為 nav 添加的新 class
+
+      // ****** 這段是漢堡選單的 JavaScript，現在它被正確地放置在 DOMContentLoaded 內部了 ******
+      const hamburger = document.querySelector('.hamburger-menu');
+      const nav = document.querySelector('.main-nav');
 
       if (hamburger && nav) {
         hamburger.addEventListener('click', () => {
-          nav.classList.toggle('active'); // 切換 nav 的 'active' class
-          hamburger.classList.toggle('active'); // 切換漢堡按鈕的 'active' class (用於動畫)
+          nav.classList.toggle('active');
+          hamburger.classList.toggle('active');
+          document.body.classList.toggle('no-scroll');
         });
       }
-      /* [新增結束] 漢堡選單 JavaScript */
+      // ****************************************************************************************
 
-      /* [新增] 讓 hero-text 浮現的 JavaScript (請確保這段在 nav 邏輯之後，且 heroText 變數名不衝突) */
+      // 讓 hero-text 浮現的 JavaScript (這段也應該在 DOMContentLoaded 內部)
       const heroText = document.querySelector('.hero-text');
       if (heroText) {
-          setTimeout(() => {
-              heroText.classList.add('fade-in');
-          }, 500); // 這裡設定 500 毫秒 (0.5 秒) 的延遲
+        setTimeout(() => {
+          heroText.classList.add('fade-in');
+        }, 500); // 這裡設定 500 毫秒 (0.5 秒) 的延遲
       }
       
+    }); // <--- DOMContentLoaded 事件監聽器的結束括號，確保所有相關腳本都在此之前
   </script>
 </body>
 </html>
