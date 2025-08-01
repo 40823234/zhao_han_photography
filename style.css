@@ -23,24 +23,7 @@ body {
     padding-left: 0px; /* 增加左側內邊距，使其向左移動 */
     box-sizing: border-box; /* 確保 padding 不增加寬度 */
   }
-  /*.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    justify-content: center;
-  }
-  
-  .gallery img {
-    width: 300px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #000;
-    transition: transform 0.3s;
-  }
-  
-  .gallery img:hover {
-    transform: scale(1.05);
-  }*/
+ 
   
   
   footer {
@@ -127,6 +110,7 @@ body {
   color: rgb(255, 255, 255); /* 讓文字在深色背景上可見 */
   text-align: center;
 }
+
 
 .header-overlay {
   position: absolute; /* 相對於 .hero-header 定位 */
@@ -309,6 +293,9 @@ body {
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer; /* 顯示為可點擊 */
+  display: flex;
+  align-items: center; /* 讓文字和圖示在垂直方向置中 */
+  gap: 5px; /* 為文字和圖示增加一點間距 */
 }
 
 .dropbtn:hover {
@@ -358,6 +345,9 @@ body {
 .hero-header nav .dropbtn {
   /* 可以繼承 .hero-header nav a 的樣式，或在此處單獨定義 */
   margin-left: 20px; /* 保持與其他導航連結相同的間距 */
+}
+.dropbtn i {
+    vertical-align: middle;
 }
 .hamburger-menu {
     display: none; /* 預設隱藏 */
@@ -412,7 +402,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    /* [新增/修改]：調整 body 的字體大小，可以考慮使用 vw */
+    /* [新增/修改]：調整 body 的字體大小 */
     body {
         font-size: 15px;
     }
@@ -420,62 +410,61 @@ body {
         overflow: hidden;
     }
 
-    /* [修改]：調整主要 section 的左右邊距，讓它更滿 */
+    /* [修改]：調整主要 section 的左右邊距 */
     section {
-        padding: 1.5em; /* 稍微減少內邊距 */
-        margin-left: 15px; /* 靠近左側 */
-        margin-right: 15px; /* 靠近右側 */
+        padding: 1.5em;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     /* [修改]：針對 #contact section 在小螢幕下的調整 */
     section#contact {
-        margin-left: 15px; /* 讓它和其它 section 統一 */
-        padding-left: 15px; /* 減少內邊距，避免太靠近邊緣 */
+        margin-left: 15px;
+        padding-left: 15px;
     }
 
     /* [修改]：調整 header 標題字體大小 */
     .hero-header h1 {
-        text-align: left; /* 標題靠左 */
-        width: auto; /* 寬度自動調整 */
-        font-size: clamp(1.8em, 5vw, 2.5em); /* 調整標題字體大小 */
+        text-align: left;
+        width: auto;
+        font-size: clamp(1.8em, 5vw, 2.5em);
     }
-
-    /* [修改]：調整導航列佈局為堆疊式（或漢堡選單） */
-    .hero-header nav {
-        flex-direction: column; /* 垂直堆疊導航連結 */
-        align-items: center; /* 置中連結 */
-        padding-right: 0; /* 移除右側 padding */
-        margin-top: 10px; /* 標題下方間距 */
-        width: 100%; /* 確保導航區塊佔滿寬度 */
+    .hero-header {
+      min-height: 250px; /* 您可以根據需求調整這個值 */
     }
-
-    .hero-header nav a,
-    .hero-header nav .dropbtn {
-        margin: 10px 0; /* 調整垂直間距 */
-        padding: 12px 20px; /* 增加點擊區域 */
-        width: calc(100% - 40px); /* 讓連結填滿選單寬度，考慮左右 padding */
+    
+    /* [最終修正]：移除寬度和填充，讓父容器控制置中 */
+    /* 同時保留垂直間距和分隔線 */
+    .hero-header .main-nav a,
+    .hero-header .main-nav .dropbtn {
+        margin: 10px 0;
+        padding: 12px 20px;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 分隔線 */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .hero-header nav a:last-child,
-    .main-nav .dropdown:last-child .dropbtn { /* 移除最後一個連結的底線 */
+    /* 移除最後一個連結的底線 */
+    .hero-header .main-nav a:last-of-type,
+    .hero-header .main-nav .dropdown:last-of-type .dropbtn {
         border-bottom: none;
     }
 
+    .main-nav .dropdown {
+        width: auto; /* 讓下拉選單容器寬度自適應內容 */
+    }
+
     .dropdown-content {
-        position: static; /* 讓下拉內容在垂直選單中自然展開 */
-        background-color: rgba(66, 65, 65, 0.8); /* 調整背景色，稍微淺一點 */
-        box-shadow: none; /* 移除陰影 */
-        min-width: unset; /* 移除最小寬度限制 */
-        width: 100%; /* 佔滿父元素寬度 */
-        border-radius: 0; /* 移除圓角 */
-        
+        position: static;
+        background-color: rgba(66, 65, 65, 0.8);
+        box-shadow: none;
+        min-width: unset;
+        width: 100%;
+        border-radius: 0;
     }
     .dropdown-content a {
-        padding: 10px 30px; /* 調整子連結的內邊距 */
+        padding: 10px 30px;
         text-align: center;
-        font-size: 0.9em; /* 子連結字體小一點 */
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.05); /* 虛線分隔 */
+        font-size: 0.9em;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
     }
     .dropdown-content a:last-child {
         border-bottom: none;
@@ -483,61 +472,77 @@ body {
 
     /* [修改]：調整 header-top-bar 在小螢幕下的佈局 */
     .header-top-bar {
-       flex-direction: row; /* 保持標題和漢堡按鈕在同一行 */
-        justify-content: space-between; /* 標題左，漢堡右 */
-        align-items: center;
-        position: fixed; /* 固定在頂部，確保漢堡按鈕始終可見 */
-        background-color: rgba(0, 0, 0, 0.8); /* 固定的頂部欄背景 */
-        padding: 10px 15px;
-        z-index: 1000; /* 確保在漢堡選單之上 */
+       flex-direction: row;
+       justify-content: space-between;
+       align-items: center;
+       position: fixed;
+       background-color: rgba(0, 0, 0, 0.8);
+       padding: 10px 15px;
+       z-index: 1000;
+    }
+    .header-overlay {
+      /* 這裡的設定決定了 .hero-text 和其他元素的垂直佈局 */
+      display: flex;
+      flex-direction: column;
+      /* 透過 justify-content 屬性將 hero-text 推到底部 */
+      justify-content: flex-end; /* 將內容推到底部 */
     }
 
     /* [修改]：調整 hero-text 字體大小和寬度 */
     .hero-text {
-        font-size: 1.2em;
-        width: 90%; /* 增加文字寬度佔比 */
-        margin-top: 50px; /* 調整頂部間距 */
-        margin-bottom: 30px; /* 調整底部間距 */
+        margin-top: 0px;
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        width: 90%;
+        margin-top: 50px;
+        margin-bottom: 30px;
     }
 
     /* [修改]：Masonry Grid 在小螢幕下的調整 */
     .grid {
-      padding: 0 10px; /* 確保左右有內邊距 */
-      /* [新增]：讓項目在小螢幕下變成一列或兩列 */
-      justify-content: center; /* 在無法完全填滿時置中 */
+      padding: 0 10px;
+      justify-content: center;
     }
 
     .grid-item {
-        /* [修改]：在小螢幕上，讓圖片佔滿大部分寬度，只顯示一列或兩列 */
-        flex-basis: calc(100% - 20px); /* 考慮到左右 10px 的間距 */
+        flex-basis: calc(100% - 20px);
         max-width: calc(100% - 20px);
-        margin-right: 0; /* 移除單個項目的右邊距，間距由 grid 的 justify-content 和 padding 控制 */
+        margin-right: 0;
     }
+
+    /* [修正]：讓漢堡按鈕在手機版顯示 */
     .hamburger-menu {
-        display: block; /* 在小螢幕顯示漢堡按鈕 */
-        margin-left: auto; /* 將漢堡按鈕推到右邊 */
-        color: white; /* 確保按鈕顏色可見 */
+        display: block;
+        margin-left: auto;
+        color: white;
     }
     .hero-header-plain .hamburger-menu .bar {
-        background-color: white; /* 確保條顏色是白的 */
+        background-color: white;
     }
-    .main-nav {
-        display: flex; /* 保持 flex 佈局以便垂直排列 */
-        flex-direction: column; /* 垂直堆疊導航連結 */
-        position: fixed; /* 讓導航列固定在螢幕上，不隨滾動 */
-        top: 0;
-        right: -100%; /* 初始位置：完全在螢幕右側之外 */
-        width: 70%; /* 選單佔螢幕寬度 70% */
-        height: 100%; /* 佔滿整個螢幕高度 */
-        background-color: rgba(30, 30, 30, 0.95); /* 半透明深色背景 */
-        padding-top: 60px; /* 留出空間給頂部 */
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5); /* 陰影效果 */
-        transition: right 0.3s ease-out; /* 滑入動畫 */
-        z-index: 999; /* 確保在最上層 */
-        align-items: center; /* 置中連結 */
+    
+    /* [最終修正]：正確的手機版選單樣式，確保位置與對齊 */
+    .hero-header .main-nav {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0px; 
+        right: -100%;
+        width: 70%;
+        height: calc(100vh - 50px);
+        background-color: rgba(30, 30, 30, 0.95);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        transition: right 0.3s ease-out;
+        z-index: 999;
+        overflow-y: auto;
+        
+        justify-content: flex-start !important;
+        align-items: center !important;
+        
+        padding-top: 20px;
     }
-    .main-nav.active {
-        right: 0; /* 滑入螢幕內 */
+    
+    .hero-header .main-nav.active {
+        right: 0;
     }
 }
 
