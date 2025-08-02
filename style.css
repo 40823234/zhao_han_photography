@@ -438,8 +438,8 @@ body {
     .hero-text {
         font-size: 1.5em;
         width: 90%;
-        margin-top: 20px;
-        margin-bottom: 150px;
+        /*margin-top: 20px;
+        margin-bottom: 150px;*/
     }
     .hero-header {
       min-height: 250px;
@@ -462,7 +462,7 @@ body {
     .header-overlay {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
     }
 
     /* [最終修正]：讓漢堡按鈕在手機版顯示 */
