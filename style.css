@@ -85,7 +85,7 @@ body {
 
   /* Lightbox 背景設定（可選） */
   .lb-data .lb-caption {
-    color: rgb(17, 16, 16);
+    color: rgba(0, 0, 0, 0.073);
   }
 
   /* 響應式設計：手機畫面時圖片間距較小 */
@@ -402,7 +402,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    /* [新增/修改]：調整 body 的字體大小 */
+    /* [最終修正]：調整 body 的字體大小 */
     body {
         font-size: 15px;
     }
@@ -410,46 +410,110 @@ body {
         overflow: hidden;
     }
 
-    /* [修改]：調整主要 section 的左右邊距 */
+    /* [最終修正]：調整主要 section 的左右邊距 */
     section {
         padding: 1.5em;
         margin-left: 15px;
         margin-right: 15px;
     }
 
-    /* [修改]：針對 #contact section 在小螢幕下的調整 */
+    /* [最終修正]：針對 #contact section 在小螢幕下的調整 */
     section#contact {
         margin-left: 15px;
         padding-left: 15px;
     }
 
-    /* [修改]：調整 header 標題字體大小 */
+    /* [最終修正]：調整 header 標題字體大小和位置 */
     .hero-header h1 {
         text-align: left;
         width: auto;
         font-size: clamp(1.8em, 5vw, 2.5em);
-    }
-    .hero-header {
-      min-height: 250px; /* 您可以根據需求調整這個值 */
+        margin: 0; /* 移除 h1 的預設外邊距，讓它完美置中 */
+        flex-shrink: 0;
+        line-height: 1;
+        top:0;
     }
     
-    /* [最終修正]：移除寬度和填充，讓父容器控制置中 */
-    /* 同時保留垂直間距和分隔線 */
+    /* [最終修正]：調整 hero-text 的字體大小和間距 */
+    .hero-text {
+        font-size: 1.5em;
+        width: 90%;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .hero-header {
+      min-height: 250px;
+    }
+
+    /* [最終修正]：調整 header-top-bar 在小螢幕下的佈局 */
+    .header-top-bar {
+       flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px 15px;
+        z-index: 1000;
+        top: 0; /* 確保從最頂端開始 */
+        left: 0; /* 確保從最左邊開始 */
+        width: 100%; /* 確保佔滿寬度 */
+        box-sizing: border-box; /* 確保 padding 不增加寬度 */
+    }
+    .header-overlay {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    /* [最終修正]：讓漢堡按鈕在手機版顯示 */
+    .hamburger-menu {
+        display: block;
+        margin-left: auto;
+        color: white;
+        
+    }
+    .hero-header-plain .hamburger-menu .bar {
+        background-color: white;
+    }
+    
+    /* [最終修正]：手機版選單樣式，確保位置與對齊 */
+    .hero-header .main-nav {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; /* 選單從螢幕頂部開始 */
+        right: -100%;
+        width: 70%;
+        height: 100vh; /* 佔滿整個螢幕高度 */
+        background-color: rgba(30, 30, 30, 0.95);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        transition: right 0.3s ease-out;
+        z-index: 999;
+        overflow-y: auto;
+        
+        justify-content: flex-start !important;
+        align-items: center !important;
+        
+        padding-top: 60px; /* **重要**：為頂部欄留出空間 */
+    }
+    
+    .hero-header .main-nav.active {
+        right: 0;
+    }
+    
+    /* [最終修正]：選單連結樣式 */
     .hero-header .main-nav a,
     .hero-header .main-nav .dropbtn {
         margin: 10px 0;
         padding: 12px 20px;
         text-align: center;
+        width: calc(100% - 40px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    /* 移除最後一個連結的底線 */
-    .hero-header .main-nav a:last-of-type,
-    .hero-header .main-nav .dropdown:last-of-type .dropbtn {
+    
+    .hero-header .main-nav a:last-child,
+    .hero-header .main-nav .dropdown:last-child .dropbtn {
         border-bottom: none;
-    }
-
-    .main-nav .dropdown {
-        width: auto; /* 讓下拉選單容器寬度自適應內容 */
     }
 
     .dropdown-content {
@@ -459,6 +523,7 @@ body {
         min-width: unset;
         width: 100%;
         border-radius: 0;
+        
     }
     .dropdown-content a {
         padding: 10px 30px;
@@ -470,80 +535,59 @@ body {
         border-bottom: none;
     }
 
-    /* [修改]：調整 header-top-bar 在小螢幕下的佈局 */
-    .header-top-bar {
-       flex-direction: row;
-       justify-content: space-between;
-       align-items: center;
+    /* [最終修正]：Lightboox 的樣式，解決白框和滾動軸問題 */
+    .lightbox {
+        background-color: rgba(0, 0, 0, 0.9); /* 移除白框，使用半透明黑色背景 */
+    }
+    .lightbox .lb-outerContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        min-height: auto;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .lightbox .lb-image {
+        max-width: 95vw !important;
+        max-height: 95vh !important;
+        object-fit: contain;
+        width: auto !important;
+        height: auto !important;
+    }
+    .lightbox .lb-dataContainer {
+       position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin-top: 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    .lightbox .lb-close {
        position: fixed;
-       background-color: rgba(0, 0, 0, 0.8);
-       padding: 10px 15px;
-       z-index: 1000;
-    }
-    .header-overlay {
-      /* 這裡的設定決定了 .hero-text 和其他元素的垂直佈局 */
-      display: flex;
-      flex-direction: column;
-      /* 透過 justify-content 屬性將 hero-text 推到底部 */
-      justify-content: flex-end; /* 將內容推到底部 */
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        background-color: transparent;
+        width: 36px;
+        height: 36px;
     }
 
-    /* [修改]：調整 hero-text 字體大小和寬度 */
-    .hero-text {
-        margin-top: 0px;
-        margin-bottom: 20px;
-        font-size: 1.5em;
-        width: 90%;
-        margin-top: 50px;
-        margin-bottom: 30px;
-    }
-
-    /* [修改]：Masonry Grid 在小螢幕下的調整 */
+    /* [最終修正]：Masonry Grid 在小螢幕下的調整 */
     .grid {
-      padding: 0 10px;
-      justify-content: center;
+        padding: 0 10px;
+        justify-content: center;
     }
-
     .grid-item {
         flex-basis: calc(100% - 20px);
         max-width: calc(100% - 20px);
         margin-right: 0;
     }
 
-    /* [修正]：讓漢堡按鈕在手機版顯示 */
-    .hamburger-menu {
-        display: block;
-        margin-left: auto;
-        color: white;
-    }
-    .hero-header-plain .hamburger-menu .bar {
-        background-color: white;
-    }
     
-    /* [最終修正]：正確的手機版選單樣式，確保位置與對齊 */
-    .hero-header .main-nav {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0px; 
-        right: -100%;
-        width: 70%;
-        height: calc(100vh - 50px);
-        background-color: rgba(30, 30, 30, 0.95);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-        transition: right 0.3s ease-out;
-        z-index: 999;
-        overflow-y: auto;
-        
-        justify-content: flex-start !important;
-        align-items: center !important;
-        
-        padding-top: 20px;
-    }
-    
-    .hero-header .main-nav.active {
-        right: 0;
-    }
 }
 
 /* 針對更小的螢幕（例如 iPhone SE，最大寬度 480px） */
