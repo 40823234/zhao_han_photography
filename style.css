@@ -496,7 +496,7 @@ body {
         justify-content: flex-start !important;
         align-items: center !important;
         
-        padding-top: 60px; /* **重要**：為頂部欄留出空間 */
+        padding-top: 0px; /* **重要**：為頂部欄留出空間 */
     }
     
     .hero-header .main-nav.active {
@@ -506,8 +506,8 @@ body {
     /* [最終修正]：選單連結樣式 */
     .hero-header .main-nav a,
     .hero-header .main-nav .dropbtn {
-        margin: 10px 0;
-        padding: 12px 20px;
+        margin: 0px 0;
+        padding: 5px;
         text-align: center;
         width: calc(100% - 40px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
