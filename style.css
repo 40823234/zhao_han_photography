@@ -591,6 +591,50 @@ body {
       justify-content: center;
       position: relative;
     } 
+    body.portfolio-page .hamburger-menu {
+        display: none;
+    }
+
+    /* 在 portfolio-page 頁面直接顯示完整的導覽列 */
+    body.portfolio-page .hero-header .main-nav {
+        display: flex;
+        flex-direction: row; /* 水平排列 */
+        justify-content: flex-end; /* 靠右對齊 */
+        align-items: center;
+        width: auto;
+        position: static; /* 移除固定定位 */
+        top: unset;
+        right: unset;
+        height: auto;
+        background-color: transparent;
+        box-shadow: none;
+        transition: none;
+        z-index: auto;
+        overflow-y: visible;
+    }
+
+    /* 調整 portfolio-page 頁面連結的樣式，使其在手機上顯示得更好看 */
+    body.portfolio-page .hero-header .main-nav a,
+    body.portfolio-page .hero-header .main-nav .dropbtn {
+        margin: 0 10px; /* 調整連結間距 */
+        padding: 5px;
+        text-align: center;
+        width: auto;
+        border-bottom: none;
+    }
+
+    /* 確保下拉選單位置正確 */
+    body.portfolio-page .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        /* ...其他樣式... */
+    }
+
+    /* 為 portfolio-page 頁面的內容區塊留出空間 */
+    body.portfolio-page section {
+        padding-top: 160px; /* 根據您的導覽列高度調整 */
+    }
 
     
 }

@@ -12,24 +12,21 @@
     <header class="hero-header hero-header-plain">
             <div class="header-top-bar">
                 <h1>Small Han</h1>
-                <button class="hamburger-menu" aria-label="Toggle navigation">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
+                
                 <nav class="main-nav">
                     <a href="index.html#menu">Menu</a>
                     <a href="About.html">About me</a>
-                    <div class="dropdown">
+                     <div class="dropdown">
                         <a href="#" class="dropbtn">Portfolio <i class="fas fa-caret-down"></i></a>
                         <div class="dropdown-content">
-                        <a href="portfolio_category1.html">Humanistic</a>
-                        <a href="portfolio_category2.html">Portrait</a>
-                        <a href="portfolio_category3.html">Landscape</a>
-                        <a href="portfolio_category4.html">Activity</a>
-                        <a href="portfolio_category5.html">Sports</a>
+                            <a href="portfolio_category1.html">Humanistic</a>
+                            <a href="portfolio_category2.html">Portrait</a>
+                            <a href="portfolio_category3.html">Landscape</a>
+                            <a href="portfolio_category4.html">Activity</a>
+                            <a href="portfolio_category5.html">Sports</a>
                         </div>
-                    </div>
+                        </div>
+                    
                     <a href="index.html#contact">Contact</a>
                     
                     
@@ -40,7 +37,7 @@
     
     </header>
     <section id="category1-content">
-        <h2> </h2>
+        
         <div class="grid">
             <div class="grid-item"><a href="images/sample1.jpg" data-lightbox="category1"><img src="images/sample1.jpg"></a></div>
             <div class="grid-item"><a href="images/sample2.jpg" data-lightbox="category1"><img src="images/sample2.jpg"></a></div>
@@ -103,17 +100,7 @@
         titleObserver.observe(titleEl, { childList: true });
       }
 
-      // ****** 這段是漢堡選單的 JavaScript，現在它被正確地放置在 DOMContentLoaded 內部了 ******
-      const hamburger = document.querySelector('.hamburger-menu');
-      const nav = document.querySelector('.main-nav');
-
-      if (hamburger && nav) {
-        hamburger.addEventListener('click', () => {
-          nav.classList.toggle('active');
-          hamburger.classList.toggle('active');
-          document.body.classList.toggle('no-scroll');
-        });
-      }
+      
       // ****************************************************************************************
 
       // 讓 hero-text 浮現的 JavaScript (這段也應該在 DOMContentLoaded 內部)
