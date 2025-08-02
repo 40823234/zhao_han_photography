@@ -6,112 +6,86 @@
     <title>Small Han</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="portfolio-page">
     <header class="hero-header hero-header-plain">
-            <div class="header-top-bar">
-                <h1>Small Han</h1>
-                
-                <nav class="main-nav">
-                    <a href="index.html#menu">Menu</a>
-                    <a href="About.html">About me</a>
-                     <div class="dropdown">
-                        <a href="#" class="dropbtn">Portfolio <i class="fas fa-caret-down"></i></a>
-                        <div class="dropdown-content">
-                            <a href="portfolio_category1.html">Humanistic</a>
-                            <a href="portfolio_category2.html">Portrait</a>
-                            <a href="portfolio_category3.html">Landscape</a>
-                            <a href="portfolio_category4.html">Activity</a>
-                            <a href="portfolio_category5.html">Sports</a>
-                        </div>
-                        </div>
-                    
-                    <a href="index.html#contact">Contact</a>
-                    
-                    
-                </nav>
-            </div>
-            
+        <div class="header-top-bar">
+            <h1>Small Han</h1>
+            <nav class="main-nav">
+                <a href="index.html#menu">Menu</a>
+                <a href="About.html">About me</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Portfolio <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="portfolio_category1.html">Humanistic</a>
+                        <a href="portfolio_category2.html">Portrait</a>
+                        <a href="portfolio_category3.html">Landscape</a>
+                        <a href="portfolio_category4.html">Activity</a>
+                        <a href="portfolio_category5.html">Sports</a>
+                    </div>
+                </div>
+                <a href="index.html#contact">Contact</a>
+            </nav>
         </div>
-    
     </header>
     <section id="category1-content">
-        
         <div class="grid">
             <div class="grid-item"><a href="images/sample1.jpg" data-lightbox="category1"><img src="images/sample1.jpg"></a></div>
             <div class="grid-item"><a href="images/sample2.jpg" data-lightbox="category1"><img src="images/sample2.jpg"></a></div>
         </div>
     </section>
-    
-<footer>
-    <p>&copy; 2025 Small-Han. All rights reserved.</p>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-
-  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
-
-  <script defer>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Lightbox 設定 - 確保在 DOMContentLoaded 事件中執行
-      lightbox.option({
-        resizeDuration: 200,
-        wrapAround: true,
-        disableScrolling: true,
-        showImageNumberLabel: true,
-        fadeDuration: 300,
-        imageFadeDuration: 300
-      });
-      // 新增：監聽 Lightbox 事件來控制滾動
-      document.addEventListener('lightbox_opened', function() {
-          document.body.classList.add('no-scroll');
-      });
-      document.addEventListener('lightbox_closed', function() {
-          document.body.classList.remove('no-scroll');
-      });
-
-
-      // Masonry 初始化
-      const grid = document.querySelector('.grid');
-      if (grid) {
-        imagesLoaded(grid, () => {
-          new Masonry(grid, {
-            itemSelector: '.grid-item',
-            columnWidth: '.grid-item',
-            gutter: 10,
-            percentPosition: true
-          });
+    <footer>
+        <p>&copy; 2025 Small-Han. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            lightbox.option({
+                resizeDuration: 200,
+                wrapAround: true,
+                disableScrolling: true,
+                showImageNumberLabel: true,
+                fadeDuration: 300,
+                imageFadeDuration: 300
+            });
+            document.addEventListener('lightbox_opened', function() {
+                document.body.classList.add('no-scroll');
+            });
+            document.addEventListener('lightbox_closed', function() {
+                document.body.classList.remove('no-scroll');
+            });
+            const grid = document.querySelector('.grid');
+            if (grid) {
+                imagesLoaded(grid, () => {
+                    new Masonry(grid, {
+                        itemSelector: '.grid-item',
+                        columnWidth: '.grid-item',
+                        gutter: 10,
+                        percentPosition: true
+                    });
+                });
+            }
+            const originalTitle = document.title;
+            const titleEl = document.querySelector('title');
+            if (titleEl) {
+                const titleObserver = new MutationObserver(() => {
+                    if (document.title !== originalTitle) {
+                        document.title = originalTitle;
+                    }
+                });
+                titleObserver.observe(titleEl, { childList: true });
+            }
+            const heroText = document.querySelector('.hero-text');
+            if (heroText) {
+                setTimeout(() => {
+                    heroText.classList.add('fade-in');
+                }, 500);
+            }
         });
-      }
-
-      // 鎖住分頁標題
-      const originalTitle = document.title;
-      const titleEl = document.querySelector('title');
-      if (titleEl) {
-        const titleObserver = new MutationObserver(() => {
-          if (document.title !== originalTitle) {
-            document.title = originalTitle;
-          }
-        });
-        titleObserver.observe(titleEl, { childList: true });
-      }
-
-      
-      // ****************************************************************************************
-
-      // 讓 hero-text 浮現的 JavaScript (這段也應該在 DOMContentLoaded 內部)
-      const heroText = document.querySelector('.hero-text');
-      if (heroText) {
-        setTimeout(() => {
-          heroText.classList.add('fade-in');
-        }, 500); // 這裡設定 500 毫秒 (0.5 秒) 的延遲
-      }
-      
-    }); // <--- DOMContentLoaded 事件監聽器的結束括號，確保所有相關腳本都在此之前
-  </script>
+    </script>
 </body>
 </html>
