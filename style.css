@@ -542,7 +542,7 @@ body.no-scroll {
     body.portfolio-page .hero-header .main-nav .dropbtn {
         margin: 0px 0px;
         padding: 10px;
-        font-size: auto;
+        font-size: 1em;
         text-align: center;
         width: auto;
         border-bottom: none;
