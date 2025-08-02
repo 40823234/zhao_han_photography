@@ -13,6 +13,9 @@ body {
     margin-left: auto;   /* 將左邊距設為 0，確保它緊貼左側 */
     margin-right: auto; /* 將右邊距設為 auto，這會將整個區塊推向左邊 */
   }
+  .portfolio-page section {
+    padding-top: 100px; /* 這裡的數值可以依據您導覽列的實際高度來調整 */
+  }
   section#contact{ /* 選擇更精確，避免影響其他 section */
     padding: 2em;
     max-width: 800px; /* 保持原有的最大寬度 */
@@ -217,21 +220,19 @@ body {
   z-index: 99; /* 確保在某些情況下它在內容上方 */
 }
 .hero-header-plain {
-    height: auto; /* 將高度設定為自動，讓內容決定高度 */
     background-image: none; /* 移除背景圖片 */
-    background-size: auto; /* 移除背景大小設定 */
-    background-position: unset; /* 重置背景定位 */
-    background-repeat: unset; /* 重置背景重複設定 */
-    background-color: #333; /* 可以設定一個純色背景，例如深灰色，或 transparent */
+    background-color: transparent; /* 移除背景顏色，讓它透明 */
+    height: auto; /* 讓容器高度自適應內部內容 */
+    min-height: 0; /* 確保沒有預設的最小高度 */
     
-    /* 確保文字不會因為背景顏色變透明而看不見，或者與上方白底有好的對比 */
-    color: white; /* 這裡可以再次確保文字顏色 */
-    text-align: center; /* 這裡也可以再次確保文本置中，或者如果你希望文字靠左就設為 left */
+    /* 移除所有可能影響空間的內邊距，交由內部容器控制 */
+    padding: 0;
     
-    /* 你可能需要根據實際效果調整 padding-top 和 padding-bottom，
-       讓 header-overlay 內的內容有足夠的上下空間 */
-    padding-top: 50px; /* 為標題和文字預留頂部空間 */
-    padding-bottom: 50px; /* 為底部預留空間 */
+    /* 確保其內部容器仍然可以正常運作 */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    position: relative;
 }
 /* Lightbox 關閉按鈕樣式調整 */
 .lightbox .lb-close {
@@ -439,7 +440,7 @@ body {
     .hero-text {
         font-size: 1.5em;
         width: 90%;
-        margin-top: 60px;
+        margin-top: 80px;
         /*margin-bottom: 150px;*/
     }
     .hero-header {
@@ -575,6 +576,21 @@ body {
         max-width: calc(100% - 20px);
         margin-right: 0;
     }
+   .hero-header-plain {
+      background-image: none; /* 移除背景圖片 */
+      background-color: transparent; /* 移除背景顏色，讓它透明 */
+      height: auto; /* 讓容器高度自適應內部內容 */
+      min-height: 0; /* 確保沒有預設的最小高度 */
+      
+      /* 移除所有可能影響空間的內邊距，交由內部容器控制 */
+      padding: 0;
+      
+      /* 確保其內部容器仍然可以正常運作 */
+      display: flex;
+      align-items: center; 
+      justify-content: center;
+      position: relative;
+    } 
 
     
 }
