@@ -11,6 +11,29 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+
+    // 監聽 Lightbox 開啟事件，使用 data-lightbox 屬性
+    document.querySelectorAll('[data-lightbox]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            // 等待 Lightbox 彈出後再執行，確保 class 被正確加入
+            setTimeout(function() {
+                body.classList.add('no-scroll');
+            }, 10);
+        });
+    });
+
+    // 監聽 Lightbox 關閉事件
+    document.addEventListener('click', function(event) {
+        // 檢查點擊的元素是否為 Lightbox 的關閉按鈕
+        if (event.target.classList.contains('lb-close')) {
+            body.classList.remove('no-scroll');
+        }
+    });
+});
+</script>
 <body>
   
   <header class="hero-header">  <!--修改這裡，增加一個 class-->

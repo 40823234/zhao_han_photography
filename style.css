@@ -87,6 +87,7 @@ body {
   .lb-data .lb-caption {
     color: rgba(0, 0, 0, 0.073);
   }
+  
 
   /* 響應式設計：手機畫面時圖片間距較小 */
   @media screen and (max-width: 600px) {
@@ -438,8 +439,8 @@ body {
     .hero-text {
         font-size: 1.5em;
         width: 90%;
-        /*margin-top: 20px;
-        margin-bottom: 150px;*/
+        margin-top: 20px;
+        /*margin-bottom: 150px;*/
     }
     .hero-header {
       min-height: 250px;
@@ -643,4 +644,8 @@ body {
     }
     /* 如果 Masonry 處理 gutter，這裡的 calc 可以更精確 */
     /* 例如 flex-basis: calc(33.333% - (gutter * 2 / 3)); */
+}
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
 }
