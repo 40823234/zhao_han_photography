@@ -56,7 +56,7 @@ footer {
 }
 
 .grid-item {
-    max-width: 300px;
+    max-width: 240px;
     margin-bottom: 16px;
     break-inside: avoid;
     opacity: 0; /* 預設隱藏圖片 */
