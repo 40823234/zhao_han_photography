@@ -61,11 +61,16 @@
             const grid = document.querySelector('.grid');
             if (grid) {
                 imagesLoaded(grid, () => {
-                    new Masonry(grid, {
+                    const masonry = new Masonry(grid, {
                         itemSelector: '.grid-item',
-                        columnWidth: '.grid-item',
+                        columnWidth: 300, // 將這裡從 '.grid-item' 改為固定的數值
                         gutter: 10,
-                        percentPosition: true
+                        percentPosition: false, // 將這裡改為 false，因為我們使用了固定的 columnWidth
+                        isFitWidth: true
+                    });
+                    const gridItems = document.querySelectorAll('.grid-item');
+                    gridItems.forEach(item => {
+                        item.classList.add('visible');
                     });
                 });
             }

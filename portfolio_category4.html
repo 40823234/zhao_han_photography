@@ -42,7 +42,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
-    <script defer>
+   <script defer>
         document.addEventListener('DOMContentLoaded', () => {
             lightbox.option({
                 resizeDuration: 200,
@@ -61,11 +61,16 @@
             const grid = document.querySelector('.grid');
             if (grid) {
                 imagesLoaded(grid, () => {
-                    new Masonry(grid, {
+                    const masonry = new Masonry(grid, {
                         itemSelector: '.grid-item',
-                        columnWidth: '.grid-item',
+                        columnWidth: 300, // 將這裡從 '.grid-item' 改為固定的數值
                         gutter: 10,
-                        percentPosition: true
+                        percentPosition: false, // 將這裡改為 false，因為我們使用了固定的 columnWidth
+                        isFitWidth: true
+                    });
+                    const gridItems = document.querySelectorAll('.grid-item');
+                    gridItems.forEach(item => {
+                        item.classList.add('visible');
                     });
                 });
             }

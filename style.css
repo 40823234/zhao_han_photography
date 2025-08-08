@@ -51,19 +51,20 @@ footer {
 
 .grid {
     max-width: 100%;
-    margin: 0;
+    margin: 0 auto; /* 移除 flexbox 相關屬性，讓 Masonry 自己處理排版和置中 */
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 }
 
 .grid-item {
-    flex: 1 1 300px;
     max-width: 300px;
     margin-bottom: 16px;
-    margin-right: 10px;
     break-inside: avoid;
+    opacity: 0; /* 預設隱藏圖片 */
+    transition: opacity 0.5s ease-in-out; /* 淡入效果 */
+}
+
+.grid-item.visible {
+    opacity: 1; /* 載入後顯示圖片 */
 }
 
 .grid-item img {
@@ -498,7 +499,6 @@ body.no-scroll {
 
     .grid {
         padding: 0 10px;
-        justify-content: center;
     }
 
     .grid-item {

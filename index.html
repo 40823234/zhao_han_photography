@@ -40,7 +40,7 @@
     </div>
   </header>
   <section id=""></section>
-  <section id="portfolio" style="max-width: 100vw; padding: 0 10px;">
+  <section id="portfolio">
     <div class="grid">
       <div class="grid-item"><a href="images/sample1.jpg" data-lightbox="category1"><img src="images/sample1.jpg"></a></div>
       <div class="grid-item"><a href="images/sample2.jpg" data-lightbox="category1"><img src="images/sample2.jpg"></a></div>
@@ -87,16 +87,21 @@
         document.body.classList.remove('no-scroll');
       });
       const grid = document.querySelector('.grid');
-      if (grid) {
-        imagesLoaded(grid, () => {
-          new Masonry(grid, {
-            itemSelector: '.grid-item',
-            columnWidth: '.grid-item',
-            gutter: 10,
-            percentPosition: true
+        if (grid) {
+          imagesLoaded(grid, () => {
+            const masonry = new Masonry(grid, {
+              itemSelector: '.grid-item',
+              columnWidth: 300, // 將這裡從 '.grid-item' 改為固定的數值
+              gutter: 10,
+              percentPosition: false, // 將這裡改為 false
+              isFitWidth: true
+            });
+            const gridItems = document.querySelectorAll('.grid-item');
+            gridItems.forEach(item => {
+              item.classList.add('visible');
+            });
           });
-        });
-      }
+        }
       const originalTitle = document.title;
       const titleEl = document.querySelector('title');
       if (titleEl) {
