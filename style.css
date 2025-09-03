@@ -390,12 +390,13 @@ body.no-scroll {
     max-width: 1200px; /* 限制在大螢幕上的寬度 */
     margin: 0 auto; /* 讓容器在頁面中居中 */
     margin-top: 100px;
+    flex-direction: row-reverse; 
 }
 
 /* 文字欄位的樣式 */
 .about-text {
     flex: 1; /* 讓這個項目可以伸展並佔據空間 */
-    padding-right: 40px; /* 在文字和圖片之間增加間距 */
+    padding-left: 40px; /* 在文字和圖片之間增加間距 */
     line-height: 1.6; /* 增加行距以提高可讀性 */
     font-size: 1.1em;
     max-width: 800px; /* 可選：限制文字區塊的寬度 */
