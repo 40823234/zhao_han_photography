@@ -646,6 +646,7 @@ body.no-scroll {
     .about-text {
         padding-right: 0;
         margin-bottom: 30px; /* 在文字和圖片之間增加間距 */
+        text-align: center;
     }
 }
 
