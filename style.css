@@ -713,43 +713,7 @@ body.no-scroll {
         width: 100%;
         max-width: 450px;
     }
-    .about-container {
-    display: flex; /* 讓子元素（文字和圖片）並排顯示 */
-    justify-content: center; /* 讓內容水平居中 */
-    align-items: center; /* 讓內容垂直居中 */
-    flex-wrap: wrap; /* 允許項目在小螢幕上換行 */
-    padding: 50px 20px; /* 在內容周圍增加間距 */
-    max-width: 1200px; /* 限制在大螢幕上的寬度 */
-    margin: 0 auto; /* 讓容器在頁面中居中 */
-    margin-top: 100px;
-    /*flex-direction: row-reverse; */
-    }
-
-    /* 文字欄位的樣式 */
-    .about-text {
-        flex: 1.5; /* 讓這個項目可以伸展並佔據空間 */
-        padding-right: 40px; /* 在文字和圖片之間增加間距 */
-        line-height: 1.6; /* 增加行距以提高可讀性 */
-        font-size: 1.1em;
-        max-width: 900px; /* 可選：限制文字區塊的寬度 */
-        color: #ffffff;
-        text-align: left; 
-        
-    }
-
-    /* 圖片欄位的樣式 */
-    .about-image {
-        flex: 1.6; /* 讓這個項目也可以伸展 */
-        max-width: 800px; /* 限制圖片欄位的寬度 */
-        text-align: center; /* 圖片居中顯示 */
-    }
-
-    /* 讓圖片本身具有響應式特性 */
-    .about-image img {
-        max-width: 100%; /* 確保圖片不會超出其容器 */
-        height: auto; /* 保持圖片的長寬比 */
-        display: block; /* 移除圖片下方多餘的空間 */
-    }
+    
 }
 /* 容器樣式：確保相對定位 */
 .grid-item a {
