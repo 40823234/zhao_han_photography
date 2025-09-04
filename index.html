@@ -118,62 +118,73 @@
   <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
   <script defer>
     document.addEventListener('DOMContentLoaded', () => {
-      lightbox.option({
-        resizeDuration: 200,
-        wrapAround: true,
-        disableScrolling: true,
-        showImageNumberLabel: true,
-        fadeDuration: 300,
-        imageFadeDuration: 300
-      });
-      document.addEventListener('lightbox_opened', function() {
-        document.body.classList.add('no-scroll');
-      });
-      document.addEventListener('lightbox_closed', function() {
-        document.body.classList.remove('no-scroll');
-      });
-      const grid = document.querySelector('.grid');
-        if (grid) {
-          imagesLoaded(grid, () => {
-            const masonry = new Masonry(grid, {
-              itemSelector: '.grid-item',
-              columnWidth: 240, // 將這裡從 '.grid-item' 改為固定的數值
-              gutter: 10,
-              percentPosition: false, // 將這裡改為 false
-              isFitWidth: true
+        // 漢堡選單功能
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('.main-nav');
+        const body = document.querySelector('body');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                body.classList.toggle('no-scroll');
             });
-            const gridItems = document.querySelectorAll('.grid-item');
-            gridItems.forEach(item => {
-              item.classList.add('visible');
-            });
-          });
         }
-      const originalTitle = document.title;
-      const titleEl = document.querySelector('title');
-      if (titleEl) {
-        const titleObserver = new MutationObserver(() => {
-          if (document.title !== originalTitle) {
-            document.title = originalTitle;
-          }
+        
+        // Masonry 圖片排版功能
+        lightbox.option({
+            resizeDuration: 200, wrapAround: true, disableScrolling: true,
+            showImageNumberLabel: true, fadeDuration: 300, imageFadeDuration: 300
         });
-        titleObserver.observe(titleEl, { childList: true });
-      }
-      const hamburger = document.querySelector('.hamburger-menu');
-      const nav = document.querySelector('.main-nav');
-      if (hamburger && nav) {
-        hamburger.addEventListener('click', () => {
-          nav.classList.toggle('active');
-          hamburger.classList.toggle('active');
-          document.body.classList.toggle('no-scroll');
+
+        document.addEventListener('lightbox_opened', function() {
+            document.body.classList.add('no-scroll');
         });
-      }
-      const heroText = document.querySelector('.hero-text');
-      if (heroText) {
-        setTimeout(() => {
-          heroText.classList.add('fade-in');
-        }, 500);
-      }
+
+        document.addEventListener('lightbox_closed', function() {
+            document.body.classList.remove('no-scroll');
+        });
+
+        const grid = document.querySelector('.grid');
+        if (grid) {
+            imagesLoaded(grid, () => {
+                const masonry = new Masonry(grid, {
+                    itemSelector: '.grid-item',
+                    columnWidth: 240, 
+                    gutter: 10,
+                    percentPosition: false, 
+                    isFitWidth: true
+                });
+                const gridItems = document.querySelectorAll('.grid-item');
+                gridItems.forEach(item => {
+                    item.classList.add('visible');
+                });
+            });
+        }
+        
+        // 鎖住分頁標題，如果需要
+        const originalTitle = document.title;
+        const titleEl = document.querySelector('title');
+        if (titleEl) {
+            const titleObserver = new MutationObserver(() => {
+                if (document.title !== originalTitle) {
+                    document.title = originalTitle;
+                }
+            });
+            titleObserver.observe(titleEl, { childList: true });
+        }
+
+        // 處理從其他頁面跳轉回首頁時的滾動
+        if (window.location.hash === '#contact') {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                // 等待一小段時間，確保頁面元素都載入完成再滾動
+                setTimeout(() => {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }, 100); 
+            }
+        }
     });
-  </script>
+ </script>
 </body>
 </html>

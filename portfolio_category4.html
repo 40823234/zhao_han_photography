@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        
+        .grid-item {
+            width: 100%;
+            max-width: 450px; /* 這裡的數值要與您在 Masonry 中設定的 columnWidth 一致 */
+        }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Small Han</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
@@ -70,7 +77,7 @@
                 imagesLoaded(grid, () => {
                     const masonry = new Masonry(grid, {
                         itemSelector: '.grid-item',
-                        columnWidth: 240, // 將這裡從 '.grid-item' 改為固定的數值
+                        columnWidth: 450, // 將這裡從 '.grid-item' 改為固定的數值
                         gutter: 10,
                         percentPosition: false, // 將這裡改為 false，因為我們使用了固定的 columnWidth
                         isFitWidth: true
