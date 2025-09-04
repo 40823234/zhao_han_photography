@@ -398,7 +398,7 @@ body.no-scroll {
     flex: 1; /* 讓這個項目可以伸展並佔據空間 */
     padding-right: 40px; /* 在文字和圖片之間增加間距 */
     line-height: 1.6; /* 增加行距以提高可讀性 */
-    font-size: 1em;
+    font-size: 0.9em;
     max-width: 800px; /* 可選：限制文字區塊的寬度 */
     color: #ffffff;
     text-align: left; 
@@ -697,7 +697,7 @@ body.no-scroll {
         max-width: calc(33.333% - 20px);
     }
 }
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1700px) {
     /* 增加頁面主要容器的最大寬度，讓圖片排得更寬 */
     section {
         max-width: 2000px; /* 您可以根據需求調整這個值 */
@@ -721,7 +721,7 @@ body.no-scroll {
     padding: 50px 20px; /* 在內容周圍增加間距 */
     max-width: 1200px; /* 限制在大螢幕上的寬度 */
     margin: 0 auto; /* 讓容器在頁面中居中 */
-    margin-top: 200px;
+    margin-top: 100px;
     /*flex-direction: row-reverse; */
     }
 
